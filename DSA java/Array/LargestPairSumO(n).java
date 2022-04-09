@@ -2,10 +2,9 @@ public class Main {
     public static void main(String[] args) {
        int arr [] = {10, 12, -5, 15, -6};
         int n = arr.length;
-        Arrays.sort(arr);
-        int sum = 0;
         int large1 = Integer.MIN_VALUE;
         int large2 = Integer.MIN_VALUE;
+        
         for(int i =0; i<n; i++){
             if(arr[i]>large1){
                 large2=large1;
