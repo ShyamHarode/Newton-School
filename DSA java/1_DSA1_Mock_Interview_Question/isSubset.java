@@ -1,3 +1,4 @@
+// Q. Check whether second array is subSet of first array or not.
 import java.util.*;
 
 public class isSubset {
