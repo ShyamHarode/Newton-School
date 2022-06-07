@@ -1,0 +1,38 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args)throws IOException{
+		BufferedReader bi=new BufferedReader(new InputStreamReader(System.in));
+		String str[]=bi.readLine().split(" ");
+		int n=Integer.parseInt(str[0]);
+		int k=Integer.parseInt(str[1]);
+		int[] arr=new int[n];
+		String str2[]=bi.readLine().split(" ");
+		for(int i=0;i<n;i++){
+			arr[i]=Integer.parseInt(str2[i]);
+		}
+		Deque<Integer> dq=new LinkedList<>();
+		for(int i=0;i<k;i++){
+			while(!dq.isEmpty() && arr[dq.peekLast()]<=arr[i])
+			dq.pollLast();
+
+			dq.add(i);
+		}
+		 long ans=1;
+		for(int i=k;i<n;i++){
+			ans=(ans*arr[dq.peek()])%1000000007;
+			while(!dq.isEmpty() && dq.peek()<=i-k)
+			dq.pollFirst();
+
+			while(!dq.isEmpty() && arr[dq.peekLast()]<=arr[i])
+			dq.pollLast();
+
+			dq.add(i);
+		}
+		ans=(ans*arr[dq.peek()])%1000000007;
+		System.out.print(ans);
+	}
+}
